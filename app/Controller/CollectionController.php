@@ -5,7 +5,13 @@
         public $name = 'Collection';
         public $helpers = array('Html', 'Form');
         var $uses = array('Collection','Post');
-        public $components = array('Search.Prg','Paginator');
+        //public $components = array('Search.Prg','Paginator');
+        public $components = array(
+            'Search.Prg' => array(
+                'commonProcess' => array('paramType' => 'named'),
+                'presetForm' => array('paramType' => 'named')
+            ),'Paginator'
+        );
         public $presetVars = array();
 
 
@@ -37,7 +43,7 @@
                 'limit' => 10
             );
 
-            if(!isset($conditions)) {
+            /*if(isset($conditions)) {
                 $this->set(
                     'posts',
                     $this->Collection->find(
@@ -53,9 +59,9 @@
                         )
                     )
                 );
-            }else {
+            }else {*/
                 $this->set('posts', $this->paginate('Collection'));
-            }
+            //}
 
             //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
 

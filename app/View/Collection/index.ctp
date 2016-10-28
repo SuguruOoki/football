@@ -85,6 +85,6 @@
         </tr>
     <?php endforeach; ?>
 
-    <?php debug($_POST);//unset($post); ?>
+    <?php unset($post); ?>
 </table>
 <?php echo $this->element('pager')?>

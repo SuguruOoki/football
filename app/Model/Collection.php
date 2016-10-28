@@ -59,12 +59,14 @@ class Collection extends AppModel {
     public $actsAs = array( 'CsvExport','CsvImport','Search.Searchable');
 
     public $filterArgs = array(
+        array('name' => 'gameid', 'type' => 'value', 'field' => 'Collection.gameid'),
         array('name' => 'quarter', 'type' => 'value', 'field' => 'Collection.quarter'),
         array('name' => 'play_number', 'type' => 'value', 'field' => 'Collection.play_number'),
     );
 
     // 検索対象のフィールド設定
     public $presetVars = array(
+        array('field' => 'gameid', 'type' => 'value'),
         array('field' => 'quarter', 'type' => 'value'),
         array('field' => 'play_number', 'type' => 'value'),
 
