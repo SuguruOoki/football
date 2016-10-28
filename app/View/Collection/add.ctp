@@ -7,10 +7,10 @@
      */
      -->
 <h1>プレイ登録画面</h1>
-<?php echo $this->Html->link(
+<?/*php echo $this->Html->link(
     '戻る',
-    array('controller' => 'collection', 'action' => 'index')
-); ?>
+    array('controller' => 'collection', 'action' => 'index',$collections['Collection']['gameid'])
+); */?>
 
 <?php echo $this->Html->link(
     '一括インポート',
@@ -18,11 +18,13 @@
 ); ?>
 
 <?php
-    echo $this->Form->create('gameid');
+    //echo $this->Form->create('gameid');
     echo $this->Form->create('Collection');
+    echo $this->Form->input('quarter');
     echo $this->Form->input('play_number');
     echo $this->Form->input('down');
     echo $this->Form->input('lest_yds');
+    echo $this->Form->input('ball_on_jin');
     echo $this->Form->input('ball_on');
     echo $this->Form->input('formation_side');
     echo $this->Form->input('offense_front_formation');
@@ -36,9 +38,11 @@
     echo $this->Form->input('defense_formation');
     echo $this->Form->input('cover');
     echo $this->Form->input('check_points', array('rows' => '3'));
+    echo $this->Form->input('gameid', array('type' => 'hidden'));
+    echo $this->Form->input('id', array('type' => 'hidden'));
     echo $this->Form->end('プレイを登録');
 ?>
-<?php echo $this->Html->link(
+<?php /*echo $this->Html->link(
     '戻る',
-    array('controller' => 'collection', 'action' => 'index')
-); ?>
+    array('controller' => 'collection', 'action' => 'index',$collections['Collection']['gameid'])
+);*/ ?>

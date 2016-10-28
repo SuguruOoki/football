@@ -6,10 +6,10 @@
     array('controller'=>'posts','action' => 'index')
 ); ?>
 <?php
-    echo $this->Html->link(
+   /* echo $this->Html->link(
     'プレイ一覧へ',
     array('action' => 'index',$collections['Collection']['gameid'])
-); ?>
+); */?>
 
 <?php
     //$quarter_items=array(4,1,2,3);

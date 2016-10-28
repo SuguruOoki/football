@@ -6,6 +6,9 @@
         //var $uses = array('Post','Collection');
 
         public function index($gameid) {
+            if(!isset($gameid)){
+                $gameid=$_POST['gameid'];
+            }
 
             //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
             $this->set(
@@ -26,7 +29,10 @@
         }
 
         // プレイ新規追加 Start ------------------------------------------------
-        public function add() {
+        public function add($gameid) {
+
+            $this->set('collections', $gameid);
+
             if ($this->request->is('post')) {
                 $this->Collection->create();
                 if ($this->Collection->save($this->request->data)) {
@@ -61,7 +67,7 @@
                 $this->Collection->id = $id;
                 if ($this->Collection->save($this->request->data)) {
                     $this->Flash->success(__('アップデートしました。'));
-                    return $this->redirect(array('action' => 'index',$gameid));
+                    return $this->redirect(array('action' => 'index'));
                 }
                 $this->Flash->error(__('アップデートできませんでした。'));
             }

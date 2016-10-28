@@ -27,6 +27,9 @@ class Collection extends AppModel {
         'lest_yds' => array(
             'rule' => 'notBlank'
         ),
+        'ball_on_jin' => array(
+            'rule' => 'notBlank'
+        ),
         'ball_on' => array(
             'rule' => 'notBlank'
         ),
