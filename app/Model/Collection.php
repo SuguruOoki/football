@@ -9,17 +9,17 @@ class Collection extends AppModel {
     public $validate = array(
         'quarter' => array(
             'rule' => 'notBlank',
-            'message' => '入力必須項目です。',
-            'rule' => array('isUnique', array( 'quarter', 'play_number'), false),
-            'message' => 'クォーターとプレイナンバーが重複しています。'
+            //'message' => '入力必須項目です。',
+            //'rule' => array('isUnique', array( 'quarter', 'play_number'), false),
+            //'message' => 'クォーターとプレイナンバーが重複しています。'
         ),
         'play_number' => array(
             'rule' => 'notBlank',
-            'message' => '入力必須項目です。',
-            'rule' => 'naturalNumber',
-            'message' => '自然数で入力してください。',
-            'rule' => array('isUnique', array( 'quarter', 'play_number'), false),
-            'message' => 'クォーターとプレイナンバーが重複しています。'
+            //'message' => '入力必須項目です。',
+            //'rule' => 'naturalNumber',
+            //'message' => '自然数で入力してください。',
+            //'rule' => array('isUnique', array( 'quarter', 'play_number'), false),
+            //'message' => 'クォーターとプレイナンバーが重複しています。'
         ),
         'down' => array(
             'rule' => 'notBlank'
@@ -55,6 +55,11 @@ class Collection extends AppModel {
             'rule' => 'notBlank'
         )
     );
-    public $actsAs = array( 'CsvExport','CsvImport' );
+    public $actsAs = array( 'CsvExport','CsvImport','Search.Searchable');
+    public $filterArgs = array(
+// 例
+        'play_side_lr' => array('type' => 'like'),
+        'play_side_sw' => array('type' => 'like'),
+    );
 
 }

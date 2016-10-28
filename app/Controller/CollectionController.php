@@ -4,11 +4,29 @@
     {
         public $helpers = array('Html', 'Form');
         //var $uses = array('Post','Collection');
+        public $components = array('Search.Prg','Paginator');
+        public $presetVars = true;
+
+
+        public function beforeFilter()
+        {
+            // ページャ設定
+            $pager_numbers = array(
+                'before' => ' - ',
+                'after'=>' - ',
+                'modulus'=> 10,
+                'separator'=> ' ',
+                'class'=>'pagenumbers'
+            );
+            $this->set('pager_numbers', $pager_numbers);
+        }
+
 
         public function index($gameid) {
-            if(!isset($gameid)){
-                $gameid=$_POST['gameid'];
-            }
+
+            $this->paginate = array(
+                'limit' => 2
+            );
 
             //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
             $this->set(

@@ -741,3 +741,16 @@ pre {
 #url-rewriting-warning {
 	display:none;
 }
+
+
+.pagers {
+	text-align:center;
+	font-size:large;
+}
+.pagers a,
+.pagers span {
+	padding:0 0.2em;
+}
+.pagers .disabled {
+	color:#ccc;
+}

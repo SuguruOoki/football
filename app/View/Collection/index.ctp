@@ -15,6 +15,9 @@
     array('controller' => 'posts', 'action' => 'index')
 ); ?>
 
+<!--検索フォーム（一部一致）-->
+<?php echo $this->element('searchForm')?>
+<?php echo $this->element('pager')?>
 <table>
     <tr>
         <th>Delete</th>
@@ -77,3 +80,4 @@
 
     <?php unset($post); ?>
 </table>
+<?php echo $this->element('pager')?>
