@@ -2,14 +2,18 @@
 
     Class CollectionController extends AppController
     {
+        public $name = 'Collection';
         public $helpers = array('Html', 'Form');
-        //var $uses = array('Post','Collection');
+        var $uses = array('Collection','Post');
         public $components = array('Search.Prg','Paginator');
-        public $presetVars = true;
+        public $presetVars = array();
 
 
         public function beforeFilter()
         {
+            // 検索対象のフィールド設定代入
+            $this->presetVars = $this->Collection->presetVars;
+
             // ページャ設定
             $pager_numbers = array(
                 'before' => ' - ',
@@ -21,29 +25,40 @@
             $this->set('pager_numbers', $pager_numbers);
         }
 
-
         public function index($gameid) {
 
+
+            // 検索条件設定
+            $this->Prg->commonProcess();
+            // 検索条件取得
+            $conditions = $this->Collection->parseCriteria($this->passedArgs);
+
             $this->paginate = array(
-                'limit' => 2
+                'limit' => 10
             );
 
-            //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
-            $this->set(
-                'posts',
-                $this->Collection->find(
-                    'all',
-                    array(
-                        'conditions' => array(
-                            'Collection.gameid' => $gameid
-                        ),
-                        'order' => array(
-                            'Collection.quarter',
-                            'Collection.play_number'
+            if(!isset($conditions)) {
+                $this->set(
+                    'posts',
+                    $this->Collection->find(
+                        'all',
+                        array(
+                            'conditions' => array(
+                                'Collection.gameid' => $gameid
+                            ),
+                            'order' => array(
+                                'Collection.quarter',
+                                'Collection.play_number'
+                            )
                         )
                     )
-                )
-            );
+                );
+            }else {
+                $this->set('posts', $this->paginate('Collection'));
+            }
+
+            //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
+
         }
 
         // プレイ新規追加 Start ------------------------------------------------

@@ -6,7 +6,8 @@
      * Time: 17:35
      */
 class Collection extends AppModel {
-    public $validate = array(
+    public $name = 'Collection';
+   /* public $validate = array(
         'quarter' => array(
             'rule' => 'notBlank',
             //'message' => '入力必須項目です。',
@@ -54,12 +55,19 @@ class Collection extends AppModel {
         'cover' => array(
             'rule' => 'notBlank'
         )
-    );
+    );*/
     public $actsAs = array( 'CsvExport','CsvImport','Search.Searchable');
+
     public $filterArgs = array(
-// 例
-        'play_side_lr' => array('type' => 'like'),
-        'play_side_sw' => array('type' => 'like'),
+        array('name' => 'quarter', 'type' => 'value', 'field' => 'Collection.quarter'),
+        array('name' => 'play_number', 'type' => 'value', 'field' => 'Collection.play_number'),
+    );
+
+    // 検索対象のフィールド設定
+    public $presetVars = array(
+        array('field' => 'quarter', 'type' => 'value'),
+        array('field' => 'play_number', 'type' => 'value'),
+
     );
 
 }

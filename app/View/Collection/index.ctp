@@ -16,25 +16,32 @@
 ); ?>
 
 <!--検索フォーム（一部一致）-->
-<?php echo $this->element('searchForm')?>
+<?php echo $this->Form->create('collection', array('url'=>'index/'+$posts[0]['Collection']['gameid'])); ?>
+<fieldset>
+    <legend>検索</legend>
+    <?php echo $this->Form->input('gameid', array('label' => 'Game ID', 'class' => 'span12', 'placeholder' => '1')); ?>
+    <?php echo $this->Form->input('quarter', array('label' => 'クォーター', 'class' => 'span12', 'placeholder' => '1')); ?>
+    <?php echo $this->Form->input('play_number', array('label' => 'プレイナンバー', 'class' => 'span12', 'placeholder' => '1')); ?>
+</fieldset>
+<?php echo $this->Form->end('検索'); ?>
 <?php echo $this->element('pager')?>
 <table>
     <tr>
         <th>Delete</th>
         <th>Edit</th>
-        <th>Play Number</th>
-        <th>Down</th>
-        <th>Lest Yards</th>
-        <th>Ball On</th>
-        <th>Offense Formation</th>
-        <th>Play</th>
-        <th>Play Side</th>
-        <th>Pass Target</th>
-        <th>Target Pass Course</th>
-        <th>Gain Yards</th>
-        <th>Defense Formation</th>
-        <th>Cover</th>
-        <th>Check Point</th>
+        <th><?php echo $this->Paginator->sort('Collection.play_number', 'Play Number')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.down', 'Down')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.lest_yds', 'Lest Yards')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.ball_on_jin', 'Ball on')?> <?php echo $this->Paginator->sort('Collection.ball_on', ' ')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.offense_front_formation', 'Offense Formation')?> <?php echo $this->Paginator->sort('Collection.offense_back_formation', ' ')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.play', 'Play')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.play_side_st', 'Play Side')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.target', 'Pass Target')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.course', 'Target Course')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.gain_yds', 'Gain Yards')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.defense_formation', 'Defense Formation')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.cover', 'Cover')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.check_points', 'Check Points')?></th>
     </tr>
     <?php foreach ($posts as $post): ?>
         <tr>
@@ -78,6 +85,6 @@
         </tr>
     <?php endforeach; ?>
 
-    <?php unset($post); ?>
+    <?php debug($_POST);//unset($post); ?>
 </table>
 <?php echo $this->element('pager')?>
