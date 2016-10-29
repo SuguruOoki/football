@@ -6,7 +6,7 @@
      * Time: 17:35
      */
 class Collection extends AppModel {
-    public $name = 'Collection';
+    //public $name = 'Collection';
    /* public $validate = array(
         'quarter' => array(
             'rule' => 'notBlank',
@@ -59,17 +59,17 @@ class Collection extends AppModel {
     public $actsAs = array( 'CsvExport','CsvImport','Search.Searchable');
 
     public $filterArgs = array(
-        array('name' => 'gameid', 'type' => 'value', 'field' => 'Collection.gameid'),
-        array('name' => 'quarter', 'type' => 'value', 'field' => 'Collection.quarter'),
-        array('name' => 'play_number', 'type' => 'value', 'field' => 'Collection.play_number'),
+        array('name' => 'gameid', 'type' => 'value'),
+        array('name' => 'quarter', 'type' => 'value'),
+        array('name' => 'play_number', 'type' => 'value'),
     );
 
-    // 検索対象のフィールド設定
     public $presetVars = array(
         array('field' => 'gameid', 'type' => 'value'),
         array('field' => 'quarter', 'type' => 'value'),
         array('field' => 'play_number', 'type' => 'value'),
 
     );
+
 
 }

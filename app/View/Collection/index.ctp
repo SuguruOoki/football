@@ -19,17 +19,22 @@
 <?php echo $this->Form->create('collection', array('url'=>'index/'+$posts[0]['Collection']['gameid'])); ?>
 <fieldset>
     <legend>検索</legend>
-    <?php echo $this->Form->input('gameid', array('label' => 'Game ID', 'class' => 'span12', 'placeholder' => '1')); ?>
-    <?php echo $this->Form->input('quarter', array('label' => 'クォーター', 'class' => 'span12', 'placeholder' => '1')); ?>
-    <?php echo $this->Form->input('play_number', array('label' => 'プレイナンバー', 'class' => 'span12', 'placeholder' => '1')); ?>
+    <dl>
+        <dt><label>Game ID</label></dt>
+        <dd><?php echo $this->Form->input('gameid', array('div' => false, 'label' => false))?></dd>
+        <dt><label>Quarter</label></dt>
+        <dd><?php echo $this->Form->input('quarter', array('div' => false, 'label' => false ))?></dd>
+        <dt><label>Play Number</label></dt>
+        <dd><?php echo $this->Form->input('play_number', array('div' => false, 'label' => false ))?></dd>
+    </dl>
 </fieldset>
 <?php echo $this->Form->end('検索'); ?>
-<?php echo $this->element('pager')?>
+
 <table>
     <tr>
         <th>Delete</th>
         <th>Edit</th>
-        <th><?php echo $this->Paginator->sort('Collection.play_number', 'Play Number')?></th>
+        <th><?php echo $this->Paginator->sort('Collection.game_id', ' ')?> <?php echo $this->Paginator->sort('Collection.quarter', 'Quarter')?><?php echo $this->Paginator->sort('Collection.play_number', 'Play Number')?></th>
         <th><?php echo $this->Paginator->sort('Collection.down', 'Down')?></th>
         <th><?php echo $this->Paginator->sort('Collection.lest_yds', 'Lest Yards')?></th>
         <th><?php echo $this->Paginator->sort('Collection.ball_on_jin', 'Ball on')?> <?php echo $this->Paginator->sort('Collection.ball_on', ' ')?></th>
@@ -87,4 +92,3 @@
 
     <?php unset($post); ?>
 </table>
-<?php echo $this->element('pager')?>

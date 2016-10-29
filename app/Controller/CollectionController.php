@@ -12,7 +12,8 @@
                 'presetForm' => array('paramType' => 'named')
             ),'Paginator'
         );
-        public $presetVars = array();
+        // 検索対象のフィールド設定
+
 
 
         public function beforeFilter()
@@ -37,13 +38,17 @@
             // 検索条件設定
             $this->Prg->commonProcess();
             // 検索条件取得
-            $conditions = $this->Collection->parseCriteria($this->passedArgs);
+
+            $conditions = $this->Collection->parseCriteria($this->passedArgs['collection']);
+
 
             $this->paginate = array(
-                'limit' => 10
+                'conditions' => $conditions,
+                'limit' => 10,
             );
 
-            /*if(isset($conditions)) {
+
+            if(!isset($conditions)) {
                 $this->set(
                     'posts',
                     $this->Collection->find(
@@ -59,9 +64,9 @@
                         )
                     )
                 );
-            }else {*/
+            }else {
                 $this->set('posts', $this->paginate('Collection'));
-            //}
+            }
 
             //gameidで検索し、一覧を表示させ、クォーターとプレイナンバーでオーダーする。
 
