@@ -2,7 +2,7 @@
 
 <h1>Edit Post</h1>
 <?php echo $this->Html->link(
-    '試合一覧へ',
+    '試合一覧',
     array('controller'=>'posts','action' => 'index')
 ); ?>
 <?php
@@ -37,5 +37,5 @@
     echo $this->Form->input('play_number', array('type' => 'hidden'));
     echo $this->Form->input('gameid', array('type' => 'hidden'));
     echo $this->Form->input('id', array('type' => 'hidden'));
-    echo $this->Form->end('Save Post');
+    echo $this->Form->end('Save');
 ?>
