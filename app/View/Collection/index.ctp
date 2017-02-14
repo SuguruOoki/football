@@ -30,6 +30,17 @@
 </fieldset>
 <?php echo $this->Form->end('検索'); ?>
 
+<?php
+    echo $this->Html->script('jquery');
+    echo $this->Html->script('jquery.jqplot');
+    echo $this->Html->script('excanvas');
+    echo $this->Html->script('plugins/jqplot.barRenderer');
+    echo $this->Html->script('plugins/jqplot.pointLabels');
+    echo $this->Html->script('plugins/jqplot.highlighter');
+    echo $this->Html->script('plugins/jqplot.cursor');
+    echo $this->Html->script('plugins/sample', array('inline' => true));
+?>
+<div id="graph" style="height:600px;width:800px;margin:30px;"></div>
 <table>
     <tr>
         <th>Delete</th>
